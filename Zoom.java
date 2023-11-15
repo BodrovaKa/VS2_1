@@ -3,20 +3,19 @@ package plotter1;
 public class Zoom {
     private double xRange;
     private double yRange;
+    private double zoomFactor = 2.0;
 
-    public Zoom(double xMin, double xMax, double yMin, double yMax) {
-        this.xRange = xMax - xMin;
-        this.yRange = yMax - yMin;
+    public Zoom(double xRange, double yRange) {
+        this.xRange = xRange;
+        this.yRange = yRange;
     }
 
     public void zoomIn() {
-        double zoomFactor = 2.0;
         xRange /= zoomFactor;
         yRange /= zoomFactor;
     }
 
     public void zoomOut() {
-        double zoomFactor = 2.0;
         xRange *= zoomFactor;
         yRange *= zoomFactor;
     }
