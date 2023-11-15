@@ -16,6 +16,10 @@ public class GraphPlotter extends JPanel {
     private Zoom zoom;
     private double xMax, xMin, yMax, yMin;
 
+    private double xRange;
+    private double yRange;
+
+   
     private int screenMaxX;
     private int screenMaxY;
 
@@ -28,7 +32,10 @@ public class GraphPlotter extends JPanel {
          yMax = 1.5;
          yMin = -yMax;
 
-        zoom = new Zoom(xMin, xMax, yMin, yMax);
+         xRange = xMax - xMin;
+         yRange = yMax - yMin;
+         
+        zoom = new Zoom(xRange,  yRange );
 
         createZoomInButton();
         createZoomOutButton();
@@ -63,7 +70,7 @@ public class GraphPlotter extends JPanel {
 
         g.clearRect(0, 0, screenWidth, screenHeight); // Clear the screen
 
-        int gridSize = 50; 
+        int gridSize = 50;
         g.setColor(Color.LIGHT_GRAY);
         for (int xScreen = 0; xScreen <= screenWidth; xScreen += gridSize) {
             g.drawLine(xScreen, 0, xScreen, screenHeight);
